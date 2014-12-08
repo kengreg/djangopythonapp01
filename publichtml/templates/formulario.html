@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<title>Login de libro kyudo</title>
+<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+</head>
+<body>
+  <h1>Formulario</h1>
+<form  method="POST" action="">
+  <div class="form-group">
+{% if formas.non_field_errors %}
+<div class="form_errors">{% for err in formas.non_field_errors %}
+<div class="form_error_message">{{ err }}</div>{% endfor %}</div></div> 
+{% endif %}
+{% for hidden in formas.hidden_fields %}
+   {{ hidden }}
+{% endfor %}
+{% for field in formas.visible_fields %}
+ <div {% if field.errors %}class="field_error"{% endif %}>
+    {{ field.label_tag }}
+    {{ field }}
+    {% for err in field.errors %}
+    <span class="error_message">{{ err }}</span>
+    {% endfor %}
+  </div>
+{% endfor %}
+	<!-- editar con django 
+		 sexo en dropdown
+		 cambiar los mensajes de required, required en rojo
+		 edad no puede ser mayor a 100
+		 y que el apellido sea opcional -->
+<input type="submit" value="enviar" /></form>
+</body>
+</html>

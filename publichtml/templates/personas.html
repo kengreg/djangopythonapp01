@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<title>Listado de personas que se han agregado</title>
+<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+</head>
+<body>
+  <h1>Lista de personas que se agregaron a la base de datos</h1>
+  <table>
+    <thead>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Sexo</th>
+      <th>Opciones</th>
+    </thead>
+    <tbody>
+{% for persona in listapersonasdb %}
+<tr>
+  <td>{{ persona.nombre }}</td>
+  <td>{{ persona.apellido }}</td>
+  <td>{{ persona.edad }}</td>
+  <td>{{ persona.sexo }}</td>
+  <td><a href="borrarpersona/{{ persona.id }}" >Borrar</a></td>
+  <!--- crear editar 
+        crear un formulario que venga desde un link de aqui a una subpagina para agregar telefonos (varios), editar, agregar y borrar -->
+</tr>
+{% endfor %}
+</tbody>
+  </table>
+
+</body>
+</html>
