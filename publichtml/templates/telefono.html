@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<title>Lista de  telefonos telefonos de personas</title>
+<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+</head>
+<body>
+  <h1>Lista de télefonos actuales de esta persona: {{personadb.nombre}}</h1>
+  <table>
+    <thead>
+      <th>Numero de Casa</th>
+      <th>Editar</th>
+      <th>Eliminiar</th>
+    </thead>
+    <tbody>
+{% for telefono in telefonodb %}
+<tr>
+  <td>{{ telefono.casa }}</td>
+  <td><a href="borrartelefono/{{ telefono.id }}" >Borrar</a></td>
+</tr>
+{% endfor %}
+</tbody>
+<p><a href="agregartelefono/{{ personadb.id }}" >Agregar Telefónos</a></p>
+</body>
+</html>

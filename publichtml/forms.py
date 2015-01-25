@@ -6,6 +6,7 @@ Created on Nov 30, 2014
 @author: kengreg
 '''
 from publichtml.models import Persona
+from publichtml.models import Variostelefonos
 class Personaform(forms.ModelForm):
     #hacer una def con clean_(nombredel campo) (self)
     def clean_edad(self):
@@ -16,4 +17,10 @@ class Personaform(forms.ModelForm):
     class Meta:
         model = Persona
         fields = ["nombre","apellido","edad","sexo"]
+
+class Telefonoform(forms.ModelForm):
+    class Meta:
+        model = Variostelefonos
+        #fields = ["casa","trabajo","celular","fax","otro"]
+        fields = ["casa"]
     

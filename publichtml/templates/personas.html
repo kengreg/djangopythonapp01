@@ -13,6 +13,7 @@
       <th>Apellido</th>
       <th>Edad</th>
       <th>Sexo</th>
+      <th>telefonos</th>
       <th>Opciones</th>
     </thead>
     <tbody>
@@ -22,6 +23,11 @@
   <td>{{ persona.apellido }}</td>
   <td>{{ persona.edad }}</td>
   <td>{{ persona.sexo }}</td>
+  <td><a href="telefono/{{ persona.id }}" >Agregar Telefónos</a>{% if telefonodb %}<ul>
+    {% for telefono in telefonodb %}
+      <li>{{ telefono.home }}</li>
+    {% endfor %}</ul>
+    {% endif %}</td>
   <td><a href="borrarpersona/{{ persona.id }}" >Borrar</a></td>
   <!--- crear editar 
         crear un formulario que venga desde un link de aqui a una subpagina para agregar telefonos (varios), editar, agregar y borrar -->
