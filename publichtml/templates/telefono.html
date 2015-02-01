@@ -11,16 +11,19 @@
     <thead>
       <th>Numero de Casa</th>
       <th>Editar</th>
-      <th>Eliminiar</th>
+      <th>Eliminar</th>
     </thead>
     <tbody>
 {% for telefono in telefonodb %}
 <tr>
   <td>{{ telefono.casa }}</td>
+  <td><a href="editartelefono/{{ telefono.id }}" >Editar</a></td>
   <td><a href="borrartelefono/{{ telefono.id }}" >Borrar</a></td>
 </tr>
 {% endfor %}
 </tbody>
 <p><a href="agregartelefono/{{ personadb.id }}" >Agregar Telefónos</a></p>
+
+ <p><a href="../lista-personas">Regresar al lista</a></p>
 </body>
 </html>

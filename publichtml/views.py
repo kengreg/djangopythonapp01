@@ -4,6 +4,8 @@ from publichtml.forms import Telefonoform
 from publichtml.models import Persona, Variostelefonos
 from django.http.response import HttpResponseRedirect
 from django.template.context import RequestContext
+from django.views.generic.edit import UpdateView
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 def home(request):
@@ -47,4 +49,20 @@ def borrartelefono(request, idtelefono):
     persona = conseguirtelefonoborrar.persona
     conseguirtelefonoborrar.delete()
     return redirect ("publichtml.views.listartelefonos", idpersona=persona.id)
+
+#def editartelefono(request,idtelefono):
+   # telefonossalvados = Variostelefonos.objects.filter(id=idtelefono)
+    #return render_to_response('ensenartelefonos.html',{"telefonodb":telefonossalvados},context_instance=RequestContext(request),)
     
+def editartelefono(request, idtelefono, template_name='ensenartelefonos.html'):
+    salvado= get_object_or_404(Variostelefonos, id=idtelefono)
+    persona = salvado.persona
+    form = Telefonoform(request.POST or None, instance=salvado)
+    if form.is_valid():
+        form.save()
+        return redirect('publichtml.views.listartelefonos', idpersona=persona.id)
+    return render(request, template_name, {'form':form})
+    
+        
+                
+        

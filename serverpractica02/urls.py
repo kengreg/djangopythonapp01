@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^telefono/(?P<idpersona>[0-9])$', 'publichtml.views.listartelefonos'),
     url(r'^telefono/agregartelefono/(?P<idpersona>[0-9]*)$', 'publichtml.views.agregartelefonos'),
     url(r'^telefono/borrartelefono/(?P<idtelefono>[0-9]*)$', 'publichtml.views.borrartelefono'),
+    url(r'^telefono/editartelefono/(?P<idtelefono>[0-9]*)$', 'publichtml.views.editartelefono'),
 )
